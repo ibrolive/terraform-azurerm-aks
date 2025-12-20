@@ -65,12 +65,17 @@ module "aks" {
    cd terraform-azurerm-aks
    ```
 
-2. Create a `terraform.tfvars` file:
-   ```hcl
-   client_id     = "your-service-principal-client-id"
-   client_secret = "your-service-principal-secret"
-   location      = "eastus"
-   ```
+2. Create a `terraform.tfvars` by executing the following command:
+    ```bash
+    chmod +x create-az-sp.sh
+    ./create-az-sp.sh
+    ```
+This will create the following `terraform.tfvars` file with the following sample configuration:
+    ```hcl
+    client_id     = "your-service-principal-client-id"
+    client_secret = "your-service-principal-secret"
+    location      = "westeurope"
+    ```
 
 3. Initialize and deploy:
    ```bash
