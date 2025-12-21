@@ -106,14 +106,21 @@ This will create the following `terraform.tfvars` file with the following sample
 
 | Name | Description | Sensitive |
 |------|-------------|-----------|
-| `test_aks_id` | The AKS cluster resource ID | no |
-| `test_host` | The Kubernetes API server endpoint | yes |
-| `test_kube_raw` | Raw kubeconfig for cluster access | yes |
-| `test_cluster_portal_fqdn` | The Azure portal FQDN for the cluster | no |
-| `test_admin_client_certificate` | Admin client certificate | yes |
-| `test_admin_client_key` | Admin client key | yes |
-| `test_username` | Kubernetes cluster username | yes |
-| `test_password` | Kubernetes cluster password | yes |
+| `admin_client_certificate` | AKS admin client certificate | Yes |
+| `admin_client_key` | AKS admin client key | Yes |
+| `admin_cluster_ca_certificate` | AKS admin cluster CA certificate | Yes |
+| `admin_host` | AKS admin Kubernetes host | Yes |
+| `admin_password` | AKS admin password | Yes |
+| `admin_username` | AKS admin username | Yes |
+| `aks_id` | AKS cluster resource ID | No |
+| `client_certificate` | AKS client certificate | Yes |
+| `client_key` | AKS client key | Yes |
+| `cluster_ca_certificate` | AKS cluster CA certificate | Yes |
+| `cluster_portal_fqdn` | AKS cluster portal FQDN | No |
+| `host` | Kubernetes host endpoint | Yes |
+| `kube_raw` | Raw kubeconfig output | Yes |
+| `password` | AKS user password | Yes |
+| `username` | AKS username | Yes |
 
 ## Configuration Details
 

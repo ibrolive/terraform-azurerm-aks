@@ -35,7 +35,10 @@ resource "azurerm_subnet" "test" {
 }
 
 module "aks" {
-  source = "git::https://github.com/Azure/terraform-azurerm-aks.git?ref=4.16.0"
+  source = "Azure/aks/azurerm"
+
+  # source = "https://github.com/Azure/terraform-azurerm-aks.git"
+  # version = "4.16.0"
 
   location                  = local.resource_group.location
   prefix                    = random_id.name.hex
