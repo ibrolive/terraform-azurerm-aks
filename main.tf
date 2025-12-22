@@ -35,8 +35,9 @@ resource "azurerm_subnet" "test" {
 }
 
 module "aks" {
-  source = "Azure/aks/azurerm"
+  source = "./aks" # copy of "Azure/aks/azurerm" with bug fixes applied
 
+  # alternatively, use the module directly from GitHub
   # source = "https://github.com/Azure/terraform-azurerm-aks.git"
   # version = "4.16.0"
 
@@ -44,9 +45,10 @@ module "aks" {
   prefix                    = random_id.name.hex
   rbac_aad_tenant_id        = data.azurerm_client_config.current.tenant_id
   resource_group_name       = local.resource_group.name
-  kubernetes_version        = "1.30" # don't specify the patch version!
+  kubernetes_version        = "1.34" # don't specify the patch version!
   automatic_channel_upgrade = "patch"
-  agents_availability_zones = ["1", "2"]
+  # agents_availability_zones = ["1", "2"] # for the selected sku, zone 1 is not available in westeurope?
+  agents_availability_zones = ["2"]
   agents_count              = null
   agents_max_count          = 2
   agents_max_pods           = 100
@@ -74,6 +76,7 @@ module "aks" {
   disk_encryption_set_id  = azurerm_disk_encryption_set.des.id
   auto_scaling_enabled    = true
   host_encryption_enabled = true
+  oidc_issuer_enabled     = true
   green_field_application_gateway_for_ingress = {
     name        = "${random_id.prefix.hex}-agw"
     subnet_cidr = "10.52.1.0/24"

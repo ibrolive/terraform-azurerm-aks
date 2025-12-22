@@ -24,6 +24,7 @@ This example includes:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) - Kubernetes command-line tool
 - An Azure subscription
 - Azure service principal with contributor access (client_id and client_secret)
+- Enable end-to-end encryption in the subscription using encryption at host (if not already enabled)
 
 ## Architecture
 
